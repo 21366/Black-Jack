@@ -66,25 +66,6 @@ Carta* Mazo::TomarCarta()
 
 }
 
-
-std::string Mazo::toString()
-{
-	std::stringstream s;
-	if (can == 0)
-	{
-		s << "El mazo esta vacio" << std::endl;
-	}
-	else
-	{
-		for (int i = 0; i < can; i++)
-		{
-			s << vecar[i]->toString() << std::endl;
-			s << can << std::endl;
-		}
-	}
-	return s.str();
-}
-
 /*Para cuando el usario piede cambiar sus As*/
 void Mazo::cambiarAs()
 {
@@ -112,3 +93,24 @@ void Mazo::borrar()
 	can = 0;
 
 }
+
+
+std::string Mazo::toString()
+{
+	std::stringstream s;
+	if (can == 0)
+	{
+		s << "El mazo esta vacio" << std::endl;
+	}
+	else
+	{
+		for (int i = 0; i < can; i++)
+		{
+			s << vecar[i]->toString() << std::endl;
+			s << can << std::endl;
+		}
+	}
+	return s.str();
+}
+
+

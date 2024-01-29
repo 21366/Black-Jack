@@ -13,9 +13,9 @@ public:
 	void Inicializa();
 	void Barajar();
 	Carta* TomarCarta();
-	std::string toString();
 	void cambiarAs();
 	void borrar();
+	std::string toString();
 };
 
 
