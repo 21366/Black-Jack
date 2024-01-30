@@ -16,18 +16,21 @@ Mazo::~Mazo()
 		delete vecar[i];
 	}
 	delete[] vecar;
+	can = 0;
+	tam = 0;
 }
 
 // Inicaliza el mazo  con los diferentes valor 
 void Mazo::Inicializa()
 {
-
-	for (int valor = 1; valor <= 14; ++valor) { // para los 13 valores de las cartas 
-		for (const std::string& palo : { "Corazones", "Diamantes", "Treboles", "Picas" }) { // para los cuatro tipos de palo que tiene las cartas
-			if (valor <= 10) // por si su valor es menor a 10 para el puntaje 
-				vecar[can++] = new Carta(valor, palo, valor, false);
-			else if (valor >= 12) {  // por si su valor es mayor a 12 para el puntaje sea 10 
-				vecar[can++] = new Carta(valor, palo, 10, false);
+	if (can < tam) {
+		for (int valor = 1; valor <= 14; ++valor) { // para los 13 valores de las cartas 
+			for (const std::string& palo : { "Corazones", "Diamantes", "Treboles", "Picas" }) { // para los cuatro tipos de palo que tiene las cartas
+				if (valor <= 10) // por si su valor es menor a 10 para el puntaje 
+					vecar[can++] = new Carta(valor, palo, valor, false);
+				else if (valor >= 12) {  // por si su valor es mayor a 12 para el puntaje sea 10 
+					vecar[can++] = new Carta(valor, palo, 10, false);
+				}
 			}
 		}
 	}
@@ -42,7 +45,7 @@ void Mazo::Barajar()
 	// Distribución uniforme para generar índices aleatorios entre 0 y 51
 	std::random_device dev;
 	std::mt19937 rng(dev());
-	std::uniform_int_distribution<std::mt19937::result_type> aleatorios(0, 51);
+	std::uniform_int_distribution<std::mt19937::result_type> aleatorios(0, can);
 	// Bucle para recorrer todas las cartas del mazo
 	for (int i = 0; i < can; i++) {
 		// Obtener un índice aleatorio entre 0 y 51

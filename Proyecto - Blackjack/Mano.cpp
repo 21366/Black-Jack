@@ -66,10 +66,8 @@ bool Mano::CambiarAs()
 			vecmano[i]->cambiarAs(1);
 			return true;
 		}
-		else {
-			return false;
-		}
 	}
+	return false;
 }
 
 std::string Mano::toString()

@@ -115,7 +115,7 @@ int Interfaz::opSec()
 		if (ss >> aux && ss.eof()) {
 			if (aux > 0 && aux <= 5) {
 				valido = true;
-
+				std::cout << "aux "<<aux;
 			}
 			else {
 				std::cout << "Opcion fuera de rango. Debe elegir entre 1 y 5." << std::endl;
@@ -190,7 +190,6 @@ void Interfaz::Reglas()
 void Interfaz::Opciones1()
 {
 	std::cout << "[1] Pedir Carta   -   [2] Pasar   -  [3] Cambiar valor de A   -  [4] Guardar Partida  -  [5] Salir " << std::endl << std::endl;
-	std::cout << "Ingrese una opcion: ";
 }
 
 void Interfaz::pCase1()
@@ -229,7 +228,7 @@ void Interfaz::pCase1()
 		if (aux1 == 2) {
 			if (conta < aux) {
 				conta++;
-				std::cout << "Es tu turno,  " << jue->Nombre(conta) << std::endl;
+				std::cout << "Es tu turno, " << jue->Nombre(conta) << std::endl;
 			}
 			else if (conta = aux) {
 				system("cls");
@@ -245,16 +244,14 @@ void Interfaz::pCase1()
 		if (aux1 == 3) {
 			if (jue->cambiarAs(conta) == true) {
 				system("cls");
-				std::cout << jue->toStringJ(conta) << std::endl;
 				std::cout << "Cambio realizado con éxito." << std::endl;
-
 			}
 			else if (jue->cambiarAs(conta) == false) {
 				std::cout << "No tienes As" << std::endl;
 			}
 		}
 		if (aux1 == 4) {
-			// [4] Guardar Partida
+			std::cout << " [4] Guardar Partida  " << std::endl;
 		}
 		if (aux1 == 5) {
 			std::cout << "Gracias por jugar!" << std::endl;
@@ -273,19 +270,19 @@ void Interfaz::resultado(int aux)
 	std::cout << jue->toString() << std::endl;
 	for (int i = 1; i <= aux; i++) {
 		if (jue->perder(i) == true) {
-			std::cout << "	Jugador: " << jue->Nombre(i);
+			std::cout << "Jugador: " << jue->Nombre(i);
 			std::cout << "Perdiste, tus puntos son mayores a 21." << std::endl << std::endl << std::endl;
 		}
 		else if (jue->empate(i) == true) {
-			std::cout << "	Jugador: " << jue->Nombre(i);
+			std::cout << "Jugador: " << jue->Nombre(i);
 			std::cout << "Empate." << std::endl;
 		}
 		else if (jue->ganar(i) == true) {
-			std::cout << "	Jugador: " << jue->Nombre(i);
-			std::cout << " Felicidades, ganaste " << std::endl << std::endl;
+			std::cout << "Jugador: " << jue->Nombre(i);
+			std::cout << " Felicidades, ganaste." << std::endl << std::endl;
 		}
 		else if (jue->ganar(i) == false) {
-			std::cout << "	Jugador: " << jue->Nombre(i);
+			std::cout << "Jugador: " << jue->Nombre(i);
 			std::cout << "Lo siento, perdiste. Tienes menos puntos que el dealer." << std::endl << std::endl;
 		}
 	}
