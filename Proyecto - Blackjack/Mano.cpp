@@ -23,6 +23,12 @@ void Mano::agregarCartaMazo(Mazo* mazo)
 	}
 }
 
+void Mano::agregarCartaCarta(Carta* c)
+{
+	if (can < tam) {
+		vecmano[can++] = c;
+	}
+}
 
 void Mano::borrar() // limpiar la mano 
 {
@@ -114,7 +120,7 @@ void Mano::cargarMano(std::ifstream& file)
 		getline(line, puntos1, '|');
 		line >> bocaAbajo1;
 		aux2 = aux->cargarCarta(valor1, palo1, puntos1, bocaAbajo1);
-
+		agregarCartaCarta(aux2);
 	}
 }
 

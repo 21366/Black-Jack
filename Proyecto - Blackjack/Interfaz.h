@@ -21,6 +21,7 @@ public:
 	void Reglas();
 	void Opciones1();
 	void pCase1();
+	void Cargar();
 	int  opPS();
 	int  opSec();
 	int  opJ();

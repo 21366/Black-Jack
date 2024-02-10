@@ -13,6 +13,7 @@ public:
 	Mano();
 	~Mano();
 	// Metodos 
+	void agregarCartaCarta(Carta*);
 	void agregarCartaMazo(Mazo*);
 	void borrar();
 	int getPuntos();

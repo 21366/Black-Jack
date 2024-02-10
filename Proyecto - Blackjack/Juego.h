@@ -24,8 +24,11 @@ public:
 	bool cambiarAs(int);
 	void resultado();
 	void salir();
-	void Guardar();
-	void Cargar();
+	bool Guardar();
+	bool Cargar();
+	bool GuardarMazo();
+	bool CargarMazo();
+	int CantidadeJugadores();
 	std::string Nombre(int);
 	std::string toString();
 	std::string toStringJ(int);

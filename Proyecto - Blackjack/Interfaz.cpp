@@ -96,7 +96,7 @@ int Interfaz::opPS()
 			}
 		}
 		else {
-			std::cout << "Entrada no válida. Debe ingresar un número entre 1 y 3." << std::endl;
+			std::cout << "Entrada no valida. Debe ingresar un numero entre 1 y 3." << std::endl;
 		}
 	}
 	return aux;
@@ -122,7 +122,7 @@ int Interfaz::opSec()
 			}
 		}
 		else {
-			std::cout << "Entrada no válida. Debe ingresar un número entre 1 y 5." << std::endl;
+			std::cout << "Entrada no valida. Debe ingresar un numero entre 1 y 5." << std::endl;
 		}
 	}
 	return aux;
@@ -161,8 +161,7 @@ void Interfaz::menuPSol(int op)
 		system("pause");
 		break;
 	case 2:
-		std::cout << "Cargar partida ";
-		jue->Cargar();
+		Cargar();
 		system("pause");
 		break;
 	case 3:
@@ -252,7 +251,12 @@ void Interfaz::pCase1()
 			}
 		}
 		if (aux1 == 4) {
-			std::cout << " [4] Guardar Partida  " << std::endl;
+			if (jue->Guardar() == true) {
+				std::cout << "Guardado con exito" << std::endl;
+			}
+			else {
+				std::cout << "Guardado sin exito" << std::endl;
+			}
 		}
 		if (aux1 == 5) {
 			std::cout << "Gracias por jugar!" << std::endl;
@@ -262,6 +266,71 @@ void Interfaz::pCase1()
 
 }
 
+void Interfaz::Cargar()
+{
+	system("cls");
+	int aux = 0;
+	int aux1 = 0;
+	int conta = 1;
+	bool valido = false;
+	jue->salir();
+	if (jue->Cargar() == true) {
+		Reglas();
+		system("Pause");
+		system("cls");
+		aux = jue->CantidadeJugadores() - 1;
+		do {
+			std::cout << jue->toStringJ(conta) << std::endl;
+			Opciones1();
+			aux1 = opSec();
+			system("cls");
+			if (aux1 == 1) {
+				jue->agregarCarta(conta);
+				std::cout << jue->toStringJ(conta) << std::endl;
+			}
+			if (aux1 == 2) {
+				if (conta < aux) {
+					conta++;
+					std::cout << "Es tu turno, " << jue->Nombre(conta) << std::endl;
+				}
+				else if (conta = aux) {
+					system("cls");
+					std::cout << "La partida esta completa." << std::endl;
+					std::cout << "A continuacion, se mostraran los resultados de la partida:" << std::endl;
+					system("pause");
+					resultado(aux);
+					system("pause");
+					system("cls");
+					aux1 = 5;
+				}
+			}
+			if (aux1 == 3) {
+				if (jue->cambiarAs(conta) == true) {
+					system("cls");
+					std::cout << "Cambio realizado con éxito." << std::endl;
+				}
+				else if (jue->cambiarAs(conta) == false) {
+					std::cout << "No tienes As" << std::endl;
+				}
+			}
+			if (aux1 == 4) {
+				if (jue->Guardar() == true) {
+					std::cout << "Guardado con exito" << std::endl;
+				}
+				else {
+					std::cout << "Guardado sin exito" << std::endl;
+				}
+			}
+			if (aux1 == 5) {
+				std::cout << "Gracias por jugar!" << std::endl;
+				jue->salir();
+			}
+		} while (aux1 != 5);
+	}
+	else {
+		std::cout << "No es posible cargar una partida" << std::endl;
+	}
+}
 
 void Interfaz::resultado(int aux)
 {

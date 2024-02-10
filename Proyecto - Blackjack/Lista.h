@@ -18,10 +18,10 @@ public:
 	bool InsertarDeUltimo(JugadorGenerico*);
 	bool NombreRepetido(JugadorGenerico*);
 	int cantidadJugadores();
-	void guardarLista();
-	void cargarLista();
-	void guardarManoJ();
-	void CargarManoJ();
+	bool guardarLista();
+	bool cargarLista();
+	bool guardarManoJ();
+	bool CargarManoJ();
 	Nodo* buscar(int);
 	bool Borrar(JugadorGenerico*);
 	bool listaVacia();

@@ -119,16 +119,60 @@ void Juego::salir()
 	baraja->borrar();
 	lista->Eliminar();
 }
-
-void Juego::Guardar()
+bool Juego::Guardar()
 {
-	lista->guardarLista();
-	lista->guardarManoJ();
+	if (lista->guardarLista() == true && lista->guardarManoJ() == true && GuardarMazo() == true) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
-void Juego::Cargar()
+bool Juego::Cargar()
 {
-	lista->cargarLista();
-	lista->CargarManoJ();
+
+	if (lista->cargarLista() == true && lista->CargarManoJ() == true && CargarMazo() == true) {
+		baraja->Barajar();
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+bool Juego::GuardarMazo()
+{
+	std::ofstream file;
+	std::string nickname;
+	//para facilidad de recuperacion y separacion se crea un archivo por cada mano de jugador
+	nickname = "../Mazo.txt"; //Se crea el nombre del archivo junto con el nombre de cada jugador 
+	file.open(nickname, std::ios::out); //se abre el archivo
+	if (!file.is_open()) {
+		std::cout << "Error al abrir el archivo...\n";
+		return false;
+	}
+	baraja->guardarMazo(file);
+	file.close(); //se cierra el archivo 
+
+	return true;
+}
+bool Juego::CargarMazo()
+{
+	std::ifstream file;
+	std::string nickname;
+	nickname = "../Mazo.txt";
+	file.open(nickname); //se abre el archivo
+	if (!file.is_open()) {
+		std::cout << "Error al abrir el archivo...\n";
+		return false;
+	}
+	baraja->cargarMazo(file);
+	file.close(); //se cierra el archivo
+	return true;
+}
+int Juego::CantidadeJugadores()
+{
+	return lista->cantidadJugadores();
 }
 
 // para saber el nombre del usario 

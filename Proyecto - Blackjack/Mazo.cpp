@@ -20,6 +20,14 @@ Mazo::~Mazo()
 	tam = 0;
 }
 
+/*Este metodo nos ayuda a la hora de cargar los daros de los archivos*/
+void Mazo::InicializaCarta(Carta* c)
+{
+	if (can < tam) {
+		vecar[can++] = c;
+	}
+}
+
 // Inicaliza el mazo  con los diferentes valor 
 void Mazo::Inicializa()
 {
@@ -116,4 +124,38 @@ std::string Mazo::toString()
 	return s.str();
 }
 
+void Mazo::guardarMazo(std::ofstream& file)
+{
+	//recorre la lista crea un objeto ofstream usado para guardar para luego guardar los atributos del mazo
+	for (int i = 0; i < can; i++) {
+		vecar[i];
+		file << vecar[i]->getValor() << "|";
+		file << vecar[i]->getPalo() << "|";
+		file << vecar[i]->getPuntos() << "|";
+		file << vecar[i]->getBocaAbajo() << "\n";
 
+
+	}
+}
+
+void Mazo::cargarMazo(std::ifstream& file)
+{
+	Carta* aux = nullptr;
+	Carta* aux2 = nullptr;
+
+	std::string Memoria;
+	std::string valor1;
+	std::string palo1;
+	std::string puntos1;
+
+	bool bocaAbajo1;
+	while (getline(file, Memoria)) { //texto se carga en memoria
+		std::istringstream line{ Memoria }; //lee todo lo que haya en una linea (includio el salto de linea)
+		getline(line, valor1, '|'); //con cada getline se toma lo que haya hasta el delimitador
+		getline(line, palo1, '|');
+		getline(line, puntos1, '|');
+		line >> bocaAbajo1;
+		aux2 = aux->cargarCarta(valor1, palo1, puntos1, bocaAbajo1);
+		InicializaCarta(aux2);
+	}
+}

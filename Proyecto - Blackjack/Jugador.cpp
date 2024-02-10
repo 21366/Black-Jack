@@ -52,7 +52,7 @@ void Jugador::guardarJuga(std::ofstream& file)
 
 Jugador* Jugador::CargarJuga(std::string file)
 {
-	return nullptr; return new Jugador(file); //crea y retorna un jugador
+	 return new Jugador(file); //crea y retorna un jugador
 }
 
 
