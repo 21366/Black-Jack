@@ -162,6 +162,7 @@ void Interfaz::menuPSol(int op)
 		break;
 	case 2:
 		std::cout << "Cargar partida ";
+		jue->Cargar();
 		system("pause");
 		break;
 	case 3:

@@ -19,6 +19,8 @@ public:
 	void voltearCarta();
 	bool CambiarAs();
 	std::string toString();
+	void guardarMano(std::ofstream&);
+	void cargarMano(std::ifstream&);
 };
 
 #endif // !Mano_h

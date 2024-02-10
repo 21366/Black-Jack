@@ -24,6 +24,8 @@ public:
 	bool cambiarAs(int);
 	void resultado();
 	void salir();
+	void Guardar();
+	void Cargar();
 	std::string Nombre(int);
 	std::string toString();
 	std::string toStringJ(int);

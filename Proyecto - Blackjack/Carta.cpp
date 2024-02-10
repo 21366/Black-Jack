@@ -125,5 +125,12 @@ std::string Carta::toStringValor()
 
 }
 
+Carta* Carta::cargarCarta(std::string va, std::string pal, std::string punts, bool bA)
+{ //se transforman los strings que recupera el archivo a entenros y devuelve la carta que corresponde
+    int valor2 = convertir(va);
+    /*int palo2 = convertir(pal);*/
+    int puntos2 = convertir(punts);
+    return new Carta(valor2, pal, puntos2, bA);
 
+}
 

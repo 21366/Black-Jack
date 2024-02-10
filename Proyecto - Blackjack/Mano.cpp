@@ -85,5 +85,36 @@ std::string Mano::toString()
 }
 
 
+void Mano::guardarMano(std::ofstream& file)
+{ //recorre la lista crea un objeto ofstream usado para guardar para luego guardar los atributos de toda la mano del jugador y dealer
+	for (int i = 0; i < can; i++) {
+		vecmano[i];
+		file << vecmano[i]->getValor() << "|";
+		file << vecmano[i]->getPalo() << "|";
+		file << vecmano[i]->getPuntos() << "|";
+		file << vecmano[i]->getBocaAbajo() << "\n";
+	}
+}
 
+void Mano::cargarMano(std::ifstream& file)
+{
+	Carta* aux = nullptr;
+	Carta* aux2 = nullptr;
+
+	std::string Memoria;
+	std::string valor1;
+	std::string palo1;
+	std::string puntos1;
+
+	bool bocaAbajo1;
+	while (getline(file, Memoria)) { //texto se guarda en memoria
+		std::istringstream line{ Memoria }; //lee todo lo que haya en una linea (includio el salto de linea)
+		getline(line, valor1, '|'); //con cada getline se toma lo que haya hasta el delimitador
+		getline(line, palo1, '|');
+		getline(line, puntos1, '|');
+		line >> bocaAbajo1;
+		aux2 = aux->cargarCarta(valor1, palo1, puntos1, bocaAbajo1);
+
+	}
+}
 

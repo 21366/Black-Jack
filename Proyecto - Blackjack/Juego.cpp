@@ -24,6 +24,7 @@ void Juego::Inicializarbaraja()
 /*Ingresar jugador con sus dos cartas*/
 bool Juego::ingresarJugadores(std::string nic)
 {
+
 	JugadorGenerico* aux = new Jugador(nic);
 	if (lista->InsertarDeUltimo(aux) == true) {
 		for (int i = 0; i < 2; i++) {
@@ -118,6 +119,18 @@ void Juego::salir()
 	baraja->borrar();
 	lista->Eliminar();
 }
+
+void Juego::Guardar()
+{
+	lista->guardarLista();
+	lista->guardarManoJ();
+}
+void Juego::Cargar()
+{
+	lista->cargarLista();
+	lista->CargarManoJ();
+}
+
 // para saber el nombre del usario 
 std::string Juego::Nombre(int posicion)
 {

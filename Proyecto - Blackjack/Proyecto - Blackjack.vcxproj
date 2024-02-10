@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Carta.h" />
+    <ClInclude Include="Convertir.h" />
     <ClInclude Include="Dealer.h" />
     <ClInclude Include="Interfaz.h" />
     <ClInclude Include="Juego.h" />
@@ -140,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Carta.cpp" />
+    <ClCompile Include="Convertir.cpp" />
     <ClCompile Include="Dealer.cpp" />
     <ClCompile Include="Interfaz.cpp" />
     <ClCompile Include="Juego.cpp" />

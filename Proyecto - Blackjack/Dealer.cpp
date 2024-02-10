@@ -46,7 +46,16 @@ std::string Dealer::toString()
 }
 
 
+void Dealer::guardarJuga(std::ofstream& file)
+{
+	file << nickname << '\n';
 
+}
+
+Dealer* Dealer::CargarDealer(std::string file)
+{
+	return new Dealer(file); //crea y retorna un objeto dealer
+}
 
 
 

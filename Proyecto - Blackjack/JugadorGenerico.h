@@ -16,6 +16,7 @@ public:
 	virtual void setNickname(std::string) = 0;
 	virtual std::string getNickname() = 0;
 	virtual Mano* getMano() = 0;
+	virtual void guardarJuga(std::ofstream&) = 0;
 	virtual void pedirCartaM(Mazo*) = 0;
 	virtual bool sePaso(JugadorGenerico* n) = 0;
 	virtual std::string toString() = 0;

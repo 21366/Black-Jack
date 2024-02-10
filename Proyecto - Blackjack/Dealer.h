@@ -17,6 +17,10 @@ public:
 	virtual void pedirCartaM(Mazo*);
 	virtual bool sePaso(JugadorGenerico* n);
 	virtual std::string toString();
+
+	//Metodos relacionados con archivos
+	virtual void guardarJuga(std::ofstream&);
+	static Dealer* CargarDealer(std::string);
 };
 
 #endif // !Dealer

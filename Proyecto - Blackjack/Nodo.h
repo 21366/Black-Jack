@@ -19,7 +19,6 @@ public:
 	//SETTERS
 	void setJugador(JugadorGenerico&);
 	void setSiguiente(Nodo*);
-
 };
 
 #endif 

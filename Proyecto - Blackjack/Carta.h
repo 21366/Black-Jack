@@ -5,7 +5,7 @@
 #include <thread>
 #include <chrono>
 #include <random>
-
+#include "Convertir.h"
 #ifndef Carta_H
 #define  Carta_H
 
@@ -42,7 +42,7 @@ public:
 	std::string toString();
 	std::string toStringPalo();
 	std::string toStringValor();
-	
+	static Carta* cargarCarta(std::string, std::string, std::string, bool); //metodo para archivos (carga carta)
 
 };
 

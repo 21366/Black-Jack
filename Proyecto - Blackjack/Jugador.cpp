@@ -45,7 +45,15 @@ std::string Jugador::toString()
 	return s.str();
 }
 
+void Jugador::guardarJuga(std::ofstream& file)
+{
+	file << nickname << '\n'; //Guarda el nombre del jugador
+}
 
+Jugador* Jugador::CargarJuga(std::string file)
+{
+	return nullptr; return new Jugador(file); //crea y retorna un jugador
+}
 
 
 

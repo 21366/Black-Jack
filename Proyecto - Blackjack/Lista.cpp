@@ -78,7 +78,93 @@ int Lista::cantidadJugadores()
 	return cont;
 
 }
+void Lista::guardarLista()
+{
 
+	std::ofstream file;
+	Nodo* aux = inicio;
+	file.open("../Jugadores.txt"); //abre archivo
+	if (file.is_open()) { //verifica si se abrio bien
+		while (aux != nullptr) { //recorre la lista
+			aux->getJugador()->guardarJuga(file); //llama al metodo para guardar el jugador en ese nodo
+			aux = aux->getSiguiente(); // pasa al siguiente nodo
+		}
+	}
+	else {
+		std::cout << "No se abrio el archivo" << std::endl;
+	}
+	file.close(); //cierra el archivo
+}
+
+void Lista::cargarLista()
+{
+	std::ifstream file;
+	std::string tipo = "";
+	file.open("../Jugadores.txt"); //abre el archivo
+	if (file.is_open()) { //verifica si abrio
+		while (getline(file, tipo, '\n')) { //lee la primera linea
+			if (tipo == "CASA") { //si en la variable tipo se guardo CASA el objeto se carga como dealer y se almacena como tal
+				JugadorGenerico* aux = Dealer::CargarDealer(tipo);
+				if (aux->getNickname() != "") { // verifica si se cargo correctamente
+					InsertarDeUltimo(aux);
+				}
+			}
+			else { //si no es CASA se ingresa como jugador
+				JugadorGenerico* aux2 = Jugador::CargarJuga(tipo);
+				if (aux2->getNickname() != "") { //verifica si se cargo correctamente
+					InsertarDeUltimo(aux2); //se ingresa
+
+				}
+
+			}
+
+		}
+
+	}
+	else {
+		std::cout << "No se abrio el archivo" << std::endl;
+	}
+	file.close(); //se cierra el archivo
+}
+
+
+void Lista::guardarManoJ()
+{
+
+	Nodo* aux = inicio;
+	std::ofstream file;
+	std::string nickname;
+	//para facilidad de recuperacion y separacion se crea un archivo por cada mano de jugador
+	while (aux != nullptr) { // se crea un while para que avance hacia el siguiente jugador 
+
+		nickname = "../Mano" + aux->getJugador()->getNickname() + ".txt"; //Se crea el nombre del archivo junto con el nombre de cada jugador 
+		file.open(nickname); //se abre el archivo
+		if (!file.is_open()) {
+			std::cout << "Error al abrir el archivo...\n";
+		}
+		aux->getJugador()->getMano()->guardarMano(file); //se guarda la mano
+		aux = aux->getSiguiente();// se pasa al siguiente jugador
+		file.close(); //se cierra el archivo 
+	}
+}
+
+void Lista::CargarManoJ()
+{//funciona igual que la funcion guardar 
+	Nodo* aux = inicio;
+	std::ifstream file;
+	std::string nickname;
+	while (aux != nullptr) {
+		nickname = "..\Mano" + aux->getJugador()->getNickname() + ".txt";
+		file.open(nickname); //se abre el archivo
+		if (!file.is_open()) {
+			std::cout << "Error al abrir el archivo...\n";
+
+		}
+		aux->getJugador()->getMano()->cargarMano(file); //se guarda lal mano
+		aux = aux->getSiguiente(); //se pasa al siguiente jugador
+		file.close(); //se cierra el archivo
+	}
+}
 Nodo* Lista::buscar(int posicion)
 {
 	if (posicion < 0 || posicion >= cantidadJugadores()) {

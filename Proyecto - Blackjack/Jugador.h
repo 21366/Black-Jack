@@ -18,6 +18,9 @@ public:
 	virtual void pedirCartaM(Mazo*);
 	virtual bool sePaso(JugadorGenerico* n);
 	virtual std::string toString();
+
+	virtual void guardarJuga(std::ofstream&);
+	static Jugador* CargarJuga(std::string);
 };
 
 #endif // !Jugador
